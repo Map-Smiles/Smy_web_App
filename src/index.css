@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    @font-face {
+      font-family: Nunito;
+      font-weight: [400,600];
+      src: url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+    }
+    @font-face {
+      font-family: Lato;
+      font-weight: [400,700];
+      src: url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap') format("woff");
+    }
+  }
