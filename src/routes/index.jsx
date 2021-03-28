@@ -8,6 +8,7 @@ import Map from '../components/pages/Map'
 import Scan from '../components/pages/Scan'
 import BottomNavigation from '../components/molecules/BottomNavigation'
 import NotFound from '../components/pages/NotFound'
+import Drawer from '../components/organism/Drawer'
 
 function Routes() {
 	return (
@@ -29,6 +30,7 @@ function Routes() {
 					<NotFound />
 				</Route>
 			</Switch>
+			<Drawer />
 			<BottomNavigation />
 		</>
 	)
