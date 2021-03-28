@@ -13,7 +13,6 @@ import ThemeButton from './components/atoms/Buttons/ThemeButton'
 
 function App() {
 	const { isMobile } = useIsMobile()
-	console.log(isMobile)
 
 	return isMobile ? (
 		<ThemeProvider theme={theme}>
@@ -27,11 +26,11 @@ function App() {
 					padding: '1em .525em',
 				}}
 			>
-				<ThemeButton />
 				<Router>
 					<Routes />
 				</Router>
 			</Grid>
+			<ThemeButton />
 		</ThemeProvider>
 	) : (
 		<ErrorPage />
