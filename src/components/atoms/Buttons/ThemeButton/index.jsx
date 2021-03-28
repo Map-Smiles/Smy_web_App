@@ -17,6 +17,7 @@ export default (props) => {
 				right: 15,
 				top: 15,
 				outline: 'none',
+				zIndex: 999,
 			}}
 		/>
 	)

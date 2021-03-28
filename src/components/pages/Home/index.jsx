@@ -1,9 +1,9 @@
-import React from 'react'
+import ModalInfo from '../../molecules/ModalInfo'
 
 function Home() {
 	return (
 		<>
-			<h1>Home</h1>
+			<ModalInfo />
 		</>
 	)
 }

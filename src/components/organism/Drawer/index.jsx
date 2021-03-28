@@ -11,6 +11,7 @@ import hotel from '../../../assets/img/png/hotel.png'
 import CustomCarosel from '../../molecules/Carrousel'
 import FullButton from '../../atoms/Buttons/FullButton'
 import MilesImage from '../../atoms/MilesImage'
+import ModalInfo from '../../molecules/ModalInfo'
 
 function Drawer() {
 	const [isOpen, setisOpen] = React.useState(false)
@@ -31,7 +32,7 @@ function Drawer() {
 				backgroundColor: (props) => props.colors.highlight.menu,
 				transform: isOpen ? 'translateY(0)' : 'translateY(90%)',
 				transition: ' transform 500ms ease-in',
-				zIndex: 9,
+				zIndex: 30,
 			}}
 		>
 			<Button
@@ -69,7 +70,7 @@ function Drawer() {
 					Maxwidth: '100%',
 					height: '100%',
 					backgroundColor: (theme) => theme.colors.background,
-					zIndex: 12,
+					zIndex: 32,
 					flex: 'display',
 					flexDirection: 'column',
 					padding: '0 .75em',
@@ -116,6 +117,7 @@ function Drawer() {
 					criada em 1903 por médicos paulistas, nos moldes do Instituto Pasteur
 					de Paris.{' '}
 				</Text>
+				<ModalInfo>olo</ModalInfo>
 				<Flex
 					sx={{
 						display: 'flex',

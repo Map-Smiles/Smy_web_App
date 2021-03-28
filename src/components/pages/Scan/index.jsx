@@ -30,17 +30,33 @@ function Scan(props) {
 		<Container
 			sx={{
 				display: 'flex',
+				top: 0,
+				right: 0,
+				left: 0,
 				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
-				width: '100%',
+				maxWidth: '100%',
 				height: '100%',
-				outlineColor: (theme) => theme.colors.backgroundGlass,
-				outlineWidth: '-8px',
-				outlineOffset: '-15px',
 			}}
 		>
-			<canvas id="canvas" width={375} height={675}></canvas>
+			<div
+				sx={{
+					position: 'absolute',
+					height: '100%',
+					width: '100%',
+					top: 0,
+					right: 0,
+					left: 0,
+					bottom: 75,
+					backgroundColor: 'transparent',
+					outlineOffset: '-10em -5em -20em -5em',
+					outlineColor: (theme) => theme.colors.backgroundGlass,
+					outlineStyle: 'solid',
+					outlineWidth: '10em 5em 20em 5em',
+				}}
+			></div>
+			<canvas id="canvas" width={355} height={675}></canvas>
 		</Container>
 	)
 }

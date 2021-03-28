@@ -5,9 +5,15 @@
 import { AspectRatio, Text, jsx } from 'theme-ui'
 import placeholder from '../../../assets/img/png/placeholder.png'
 
-function MilesImage({ image, name = '', miles = '-' }) {
+function MilesImage({ image = '', name = '', miles = '-' }) {
 	return (
-		<AspectRatio ratio={4 / 3} sx={{ margin: '0 .25em 0 0 ' }}>
+		<AspectRatio
+			ratio={4 / 3}
+			sx={{
+				margin: '0 .25em 0 0 ',
+				borderRadius: '15px',
+			}}
+		>
 			<div
 				sx={{
 					position: 'absolute',
@@ -26,7 +32,7 @@ function MilesImage({ image, name = '', miles = '-' }) {
 				<Text>{miles} Milhas</Text>
 			</div>
 			<img
-				src={image ? image : placeholder}
+				src={image === '' ? image : placeholder}
 				alt={`A ${name}`}
 				sx={{
 					position: 'absolute',
@@ -36,6 +42,7 @@ function MilesImage({ image, name = '', miles = '-' }) {
 					width: '100%',
 					height: '100%',
 					objectFit: 'cover',
+					borderRadius: '15px',
 				}}
 			/>
 		</AspectRatio>

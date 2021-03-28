@@ -32,7 +32,7 @@ function App() {
 				}}
 			>
 				<Router>
-					<Header />
+					{/* <Header /> */}
 					<ThemeButton />
 					<Routes />
 					<Drawer />

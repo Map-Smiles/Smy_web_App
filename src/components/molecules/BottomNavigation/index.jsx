@@ -60,7 +60,7 @@ function BottomNavigation(props) {
 					justifyContent: 'space-evenly',
 					padding: '1.5em 0',
 					boxShadow: `0 -.25px 10px 1px #100`,
-					zIndex: 20,
+					zIndex: 40,
 				}}
 			>
 				<Flex
