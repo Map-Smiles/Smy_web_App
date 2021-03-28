@@ -10,20 +10,18 @@ import theme from './styles/theme'
 import Routes from './routes'
 import ErrorPage from './components/pages/ErrorPage'
 import ThemeButton from './components/atoms/Buttons/ThemeButton'
+import { getHealthCheck } from './utils/api'
 
 function App() {
 	const { isMobile } = useIsMobile()
-
+	getHealthCheck()
 	return isMobile ? (
 		<ThemeProvider theme={theme}>
 			<Grid
-				gap={2}
 				columns={['1fr']}
-				css={{
+				sx={{
 					height: '100vh',
-					width: '100%',
-					marginTop: '1em',
-					padding: '1em .525em',
+					width: '100vw',
 				}}
 			>
 				<Router>
