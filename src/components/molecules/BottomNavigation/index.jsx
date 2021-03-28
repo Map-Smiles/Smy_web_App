@@ -14,7 +14,6 @@ import { jsx, Flex, Box } from 'theme-ui'
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 function BottomNavigation(props) {
 	const itemNav = (rota, label, icon) => {
-		let active = false
 		return (
 			<NavLink
 				to={rota}
@@ -23,9 +22,7 @@ function BottomNavigation(props) {
 					margin: 0,
 					color: (theme) => theme.colors.gray.dark,
 				}}
-				activeStyle={{
-					color: (theme) => theme.colors.highlight,
-				}}
+				activeClassName="active"
 				isActive={(match, location) => {
 					if (!match?.isExact) {
 						return false
@@ -58,6 +55,7 @@ function BottomNavigation(props) {
 					position: 'fixed',
 					bottom: 0,
 					left: 0,
+					right: 0,
 					backgroundColor: (props) => props.colors.background,
 					justifyContent: 'space-evenly',
 					padding: '1.5em 0',

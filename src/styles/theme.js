@@ -38,6 +38,7 @@ export default {
 		primaryHover: 'rgb(255,90,0,.8)',
 		secondary: '#663399',
 		background: '#FFF',
+		backgroundGlass: '#FFFFFFD5',
 		info: '#507EF6',
 		sucess: '#53BF85',
 		error: '#F65050',
@@ -46,6 +47,7 @@ export default {
 			dark: {
 				text: '#FFFFFF',
 				background: '#5C5C5C',
+				backgroundGlass: '#4A4A4AD5',
 				accent: '#F0F5FA',
 				muted: '#F6F6F6',
 				highlight: {
@@ -65,15 +67,19 @@ export default {
 	},
 	buttons: {
 		primary: {
+			display: 'flex',
+			justifyContent: 'center',
+			AlignItems: 'center',
 			color: (theme) => theme.colors.gray.light,
+			borderRadius: '10px',
 			fontWeight: 'bold',
 			bg: (theme) => theme.colors.highlight.menu,
 			'&:hover': {
-				bg: 'text',
+				bg: '80%',
 			},
 		},
 		secondary: {
-			color: 'primary',
+			color: '#F3B13D',
 			bg: 'background',
 			border: '1px solid #E4803A',
 		},

@@ -10,6 +10,11 @@ import theme from './styles/theme'
 import Routes from './routes'
 import ErrorPage from './components/pages/ErrorPage'
 import ThemeButton from './components/atoms/Buttons/ThemeButton'
+import Header from './components/organism/Header'
+import BottomNavigation from './components/molecules/BottomNavigation'
+import Drawer from './components/organism/Drawer'
+
+//Utils
 import { getHealthCheck } from './utils/api'
 
 function App() {
@@ -20,15 +25,20 @@ function App() {
 			<Grid
 				columns={['1fr']}
 				sx={{
-					height: '100vh',
-					width: '100vw',
+					height: '100%',
+					MaxWidth: '100vw',
+					margin: 0,
+					padding: '0 15px',
 				}}
 			>
 				<Router>
+					<Header />
+					<ThemeButton />
 					<Routes />
+					<Drawer />
+					<BottomNavigation />
 				</Router>
 			</Grid>
-			<ThemeButton />
 		</ThemeProvider>
 	) : (
 		<ErrorPage />

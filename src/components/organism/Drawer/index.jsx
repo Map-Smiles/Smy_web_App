@@ -3,34 +3,18 @@
 import * as React from 'react'
 
 //Components
-import {
-	Container,
-	jsx,
-	Button,
-	Flex,
-	Heading,
-	AspectImage,
-	Text,
-} from 'theme-ui'
-import { keyframes } from '@emotion/react'
+import { Container, jsx, Button, Flex, Text } from 'theme-ui'
 import { IoChevronUpOutline, IoCameraOutline } from 'react-icons/io5'
 
 //imagem
 import hotel from '../../../assets/img/png/hotel.png'
 import CustomCarosel from '../../molecules/Carrousel'
-import theme from '../../../styles/theme'
+import FullButton from '../../atoms/Buttons/FullButton'
+import MilesImage from '../../atoms/MilesImage'
 
 function Drawer() {
-	const [open, setOpen] = React.useState(false)
+	const [isOpen, setisOpen] = React.useState(false)
 
-	const show = keyframes`
-        from {
-            transform: scaleY(0);
-        }
-        to {
-            transform: scaleY(100);
-        }
-        `
 	return (
 		<Container
 			sx={{
@@ -39,12 +23,14 @@ function Drawer() {
 				justifyContent: 'flex-start',
 				alignItems: 'center',
 				width: '100%',
-				height: open ? '70%' : '40px',
+				maxWidth: '100%',
+				height: '70%',
 				position: 'fixed',
-				bottom: 75,
+				bottom: 70,
 				left: 0,
 				backgroundColor: (props) => props.colors.highlight.menu,
-				transition: 'height 500ms ease',
+				transform: isOpen ? 'translateY(0)' : 'translateY(90%)',
+				transition: ' transform 500ms ease-in',
 				zIndex: 9,
 			}}
 		>
@@ -58,46 +44,55 @@ function Drawer() {
 					border: 'none',
 					outline: 'none',
 				}}
-				onClick={() => setOpen((preState) => !preState)}
+				onTouchStart={() => setisOpen((preState) => !preState)}
+				onClick={() => setisOpen((preState) => !preState)}
 			>
 				<IoChevronUpOutline
 					color={'#fff'}
 					size={24}
 					sx={{
-						transform: open ? 'rotate(180deg)' : 'none',
+						transform: isOpen ? 'rotate(180deg)' : 'none',
 						transition: 'transform 700ms ease-out',
 					}}
 				/>
-				<p sx={{ color: (theme) => theme.colors.gray.light, margin: 0 }}>
+				<p
+					sx={{
+						color: (theme) => theme.colors.gray.light,
+						margin: '0 0 0 5px',
+					}}
+				>
 					Descubra
 				</p>
 			</Button>
 			<Flex
 				sx={{
-					width: '100%',
-					height: '102%',
+					Maxwidth: '100%',
+					height: '100%',
 					backgroundColor: (theme) => theme.colors.background,
 					zIndex: 12,
 					flex: 'display',
 					flexDirection: 'column',
-					padding: '1em .75em',
-					justifyContent: 'space-e',
+					padding: '0 .75em',
+					justifyContent: 'space-evenly',
 				}}
 			>
 				<h4
 					sx={{
 						fontFamily: (theme) => theme.fonts.heading,
 						color: (theme) => theme.colors.highlight.menu,
-						margin: '0 0 .5em 0',
+						margin: 0,
 						letterSpacing: '1px',
 					}}
 				>
 					Paulista - Instituto Pasteur
 				</h4>
-				<CustomCarosel>
-					<AspectImage ratio={4 / 3} src={hotel} style={{ marginRight: 25 }} />
-					<AspectImage ratio={4 / 3} src={hotel} />
-				</CustomCarosel>
+				<div sx={{ position: 'relative' }}>
+					<CustomCarosel>
+						<MilesImage image={hotel} name={'nome'} key={3} />
+						<MilesImage image={hotel} name={'nome'} key={2} />
+						<MilesImage image={hotel} name={'nome'} key={1} />
+					</CustomCarosel>
+				</div>
 				<h2
 					sx={{
 						fontFamily: (theme) => theme.fonts.heading,
@@ -128,12 +123,14 @@ function Drawer() {
 						justifyContent: 'space-between',
 					}}
 				>
-					<Button mr={2} variant="secondary" sx={{ width: '47.5%' }}>
-						<IoCameraOutline />
-					</Button>
-					<Button mr={2} sx={{ width: '47.5%' }}>
-						Coletar Milhas
-					</Button>
+					{!true ? (
+						<FullButton>
+							<IoCameraOutline size={26} />
+							<Text ml={2}>Escanear QR Code</Text>
+						</FullButton>
+					) : (
+						<FullButton>Coletar Milhas</FullButton>
+					)}
 				</Flex>
 			</Flex>
 		</Container>
