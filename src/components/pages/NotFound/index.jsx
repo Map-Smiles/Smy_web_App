@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { Container, Heading, Image } from '@theme-ui/components'
 import errorImg from '../../../assets/img/svg/warn.svg'
+import { NavLink } from 'react-router-dom'
 
-function ErrorPage() {
+function NotFound() {
 	return (
 		<Container
 			sx={{
@@ -13,12 +14,12 @@ function ErrorPage() {
 			}}
 		>
 			<Heading as="h1">
-				We're sorry but this app is set for mobile devices. Please access it by
-				your phone.
+				Hey, Não encontramos essa página...
+				<NavLink to="/">Retornar a Home</NavLink>
 			</Heading>
 			<Image src={errorImg} />
 		</Container>
 	)
 }
 
-export default ErrorPage
+export default NotFound
