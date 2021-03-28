@@ -25,7 +25,7 @@ jobs:
 
       - name: Production Build
         run: |
-          yarn build
+          CI="" yarn build
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
