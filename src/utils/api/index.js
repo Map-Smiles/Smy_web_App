@@ -11,3 +11,16 @@ export async function getHealthCheck() {
 		console.log(error)
 	}
 }
+
+//Getall Spots
+
+export async function getAllSpots() {
+	try {
+		const req = await fetch(`${base}/spots`)
+		const data = await req.json()
+
+		console.log(data)
+	} catch (error) {
+		console.log(error)
+	}
+}

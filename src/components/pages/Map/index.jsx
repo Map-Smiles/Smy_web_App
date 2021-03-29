@@ -1,53 +1,69 @@
 /** @jsxRuntime classic */
 /**@jsx jsx */
 import * as React from 'react'
-import PropTypes from 'prop-types'
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 
 import { jsx, useColorMode } from 'theme-ui'
+import { getAllSpots } from '../../../utils/api'
 
 //ENV
 const { REACT_APP_MAPBOX_API_KEY } = process.env
-mapboxgl.workerClass = MapboxWorker
-mapboxgl.accessToken = REACT_APP_MAPBOX_API_KEY
+const Map = ReactMapboxGl({
+	accessToken: REACT_APP_MAPBOX_API_KEY,
+})
 
-function Map() {
-	const [lng, setLng] = React.useState(-49.27)
-	const [lat, setLat] = React.useState(-25.42)
-	const [zoom, setZoom] = React.useState(9)
+function MapComponent() {
+	const [zoom, setZoom] = React.useState(14)
+	const [isLocationGranted, setisLocationGranted] = React.useState(false)
+	const [spots, setSpots] = React.useState([])
 
 	const [colorMode, setColorMode] = useColorMode('default')
 
-	const mapContainer = React.useRef()
 	React.useEffect(() => {
-		const map = new mapboxgl.Map({
-			container: mapContainer.current,
-			style:
-				colorMode === 'dark'
-					? 'mapbox://styles/mapbox/dark-v10'
-					: 'mapbox://styles/mapbox/light-v10',
-			center: [lng, lat],
-			zoom: zoom,
-		})
-		return () => map.remove()
+		if (!isLocationGranted) return
 	}, [])
 
+	React.useEffect(() => {
+		//eslint disable next line
+		async function init() {
+			try {
+				const spots = await getAllSpots()
+				setSpots(spots)
+			} catch (err) {
+				console.log(err)
+			}
+		}
+		init()
+	}, [spots])
+
 	return (
-		<div>
-			<div
-				sx={{
-					position: 'absolute',
-					top: 0,
-					right: 0,
-					left: 0,
-					bottom: 110,
-				}}
-				ref={mapContainer}
-			/>
-		</div>
+		spots && (
+			<div>
+				<Map
+					style="mapbox://styles/mapbox/streets-v11"
+					containerStyle={{
+						height: '100vh',
+						width: '100%',
+					}}
+				>
+					{spots &&
+						spots.map((item) => (
+							<Layer
+								type="symbol"
+								id="marker"
+								layout={{ 'icon-image': 'marker-15' }}
+							>
+								<Feature coordinates={[item.longitude, item.latitude]} />
+							</Layer>
+						))}
+				</Map>
+				{spots && spots.map((item) => <p>opopo</p>)}
+			</div>
+		)
 	)
 }
 
-export default Map
+export default MapComponent

@@ -3,8 +3,8 @@
 export default {
 	space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
 	fonts: {
-		body: '"Raleway, sans-serif"',
-		heading: '"Nunito, sans-serif"',
+		body: 'Nunito, sans-serif',
+		heading: 'Nunito, sans-serif',
 		monospace: '"Cousine, monospace"',
 	},
 	fontSizes: [14, 16, 18, 22, 26, 34, 52, 68, 96],
@@ -20,7 +20,7 @@ export default {
 	colors: {
 		text: '#4A4A4A',
 		highlight: {
-			DEFAULT: '#F3B13D',
+			primary: '#F3B13D',
 			light: '#F9DF4B',
 			menu: '#E4803A',
 			secondary: '#439597',

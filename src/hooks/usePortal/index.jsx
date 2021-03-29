@@ -29,7 +29,7 @@ function usePortal(id) {
 			const existingParent = document.querySelector(`#${id}`)
 			const parentElem = existingParent || createRootElement(id)
 
-			// cheka se o elemento já existe
+			// checar se o elemento já existe
 			if (!existingParent) {
 				addRootElement(parentElem)
 			}
