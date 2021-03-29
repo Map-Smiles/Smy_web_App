@@ -19,6 +19,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Create .env file
+        run: |
+          touch .env
+          echo REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} >> .env
+          echo REACT_APP_MAPBOX_API_KEY=${{ secrets.REACT_APP_MAPBOX_API_KEY }} >> .env
+          cat .env
+
       - name: Yarn Install
         run: |
           yarn install --ignore engines
@@ -36,7 +43,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          REACT_APP_MAPBOX_API_KEY: ${{ secrets.REACT_APP_MAPBOX_API_KEY }}
           SOURCE_DIR: "build"
           
