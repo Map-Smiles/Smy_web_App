@@ -10,7 +10,6 @@ import theme from './styles/theme'
 import Routes from './routes'
 import ErrorPage from './components/pages/ErrorPage'
 import ThemeButton from './components/atoms/Buttons/ThemeButton'
-import Header from './components/organism/Header'
 import BottomNavigation from './components/molecules/BottomNavigation'
 import Drawer from './components/organism/Drawer'
 
@@ -32,7 +31,6 @@ function App() {
 				}}
 			>
 				<Router>
-					{/* <Header /> */}
 					<ThemeButton />
 					<Routes />
 					<Drawer />
